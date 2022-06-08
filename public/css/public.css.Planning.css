@@ -1,0 +1,34 @@
+.bar-b{
+    border-right: 2px solid #000000;
+}
+
+.bar-w{
+    border-bottom: 2px solid #FFFFFF;
+}
+
+.content-std{
+    width: 100%;
+    height: 15%;
+}
+
+.btnCM{
+    z-index: 100;
+    box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+}
+
+.search-icon{
+    position: absolute;
+
+    width: 5%;
+    height: 10%;
+
+    background-color: var(--two);
+}
+
+.scrool-search{
+    position: absolute;
+    width: 40%;
+    height: 60%;
+
+    overflow-y: auto;
+}

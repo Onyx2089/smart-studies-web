@@ -1,0 +1,51 @@
+.op-03{
+    opacity: 0.3;
+}
+
+
+.top-0{
+    top: 0;
+}
+
+.mrg-top-2{
+    margin-top: 2%;  
+}
+
+.mrg-top-5{
+    margin-top: 5%;  
+}
+
+.mrg-bottom-5{
+    margin-bottom: 5%
+}
+
+.mrg-right-5{
+    margin-right: 5%;   
+}
+
+.mrg-right-10{
+    margin-right: 10%;
+}
+
+.mrg-left-10{
+    margin-left: 10%;
+}
+
+
+.wid-10{
+    width: 10%;
+}
+
+.wid-18{
+    width: 18%;
+}
+
+
+
+.hei-23{
+    height: 23%;
+}
+
+.als-end{
+    align-self: end;
+}
