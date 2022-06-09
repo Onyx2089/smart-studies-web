@@ -1,28 +1,57 @@
-//alert('perfect');
-/*
-function Login()
-{
-    var xhttp = new XMLHttpRequest();
+$("#connect").click(function() {
+    var email = $("#email").val();
+    var password = $("#password").val();
 
-    var email = document.querySelector('#email').value;
-    var password = document.querySelector('#password').value;
-
-    xhttp.onreadystatechange = function()
+    if(email != "" && password != "")
     {
-        if(this.readyState == 4 && this.status == 200)
-        {
-            //alert(this.responseText);
-            var json = this.responseText;
-            json = JSON.parse(json)[0]
+        $.get(url_web_async + "script.async.Login.php?email=" + email + "&password=" + password, function(data, status) {
 
-            console.log(json);
-            //alert(json.password);
-        }
-        //alert(this.response);
-    };
+            if(data == "ADMIN")
+            {
+                window.location = url_web + "?p=admin"
+            }
+            else if(data == "STUDENT")
+            {
+                window.location = url_web + "?p=planning"
+            }
+        })
+    }
+});
 
-    xhttp.open("GET", "http://localhost:82/git/api_final/?model=profil&field=EMAIL&value=" + email, true);
-    xhttp.send();
-}*/
 
-//Login();
+/*$("#connect").click(function() {
+
+    var email = $("#email").val();
+    var password = $("#password").val();
+
+    //alert(email + " " + password);
+
+    if(email != "" && password != "")
+    {
+        $.get(url_api + "?model=profil&field=EMAIL&value=" + email, function(data, status) {
+    
+
+            //alert('here');
+            var profil = JSON.parse(data)[0];
+            console.log( profil );
+            //console.log( profil.password );
+
+            alert(password + ' ' + profil.PASSWORD)
+            if(profil.PASSWORD == password)
+            {
+                if(profil.STAT == 2000)
+                {
+                    window.location = url_web + "?p=planning"
+                }
+                else
+                {
+                    window.location = url_web + "?p=admin"
+                }
+            }  
+
+        });
+    }
+
+});*/
+
+
