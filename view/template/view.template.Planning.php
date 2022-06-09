@@ -23,7 +23,7 @@
                             <span class="ft-1_5 one-f">salle</span>
                             <span class="mrg-right-10 ft-1_5 one-f">Horaires</span>
                         </div>
-                        <div class="f6">
+                        <div id="container" class="f6">
                             <div class="content-std f jc-space-between ai-center">
                                 <span class="mrg-left-10 ft-1_5 one-f">Français</span>
                                 <span class="ft-1_5 one-f">Atelier 201</span>
@@ -64,6 +64,13 @@
                 </div>
             </div>
         </div>
+
+        <script src="http://localhost:82/git/web_final/public/js/public.js.Const.js"></script>
+        <script src="http://localhost:82/git/web_final/public/js/public.js.Planning.js"></script>
+
+        <script>
+            getClass(<?= $cursus ?>);
+        </script>
 
     </body>
 </html>
