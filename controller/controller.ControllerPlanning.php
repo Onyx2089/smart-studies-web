@@ -4,7 +4,14 @@ class ControllerPlanning
 {
     public static function Page()
     {
-        $title = "test";
+        session_start();
+
+        if(isset($_SESSION['CURSUS']))
+        {
+            $cursus = $_SESSION['CURSUS'];
+        }
+
+        $title = "Planning";
         //$css[0] = '<link rel="stylesheet" type="text/css" href="'. ConfigInterface::APP_DIR .'/public/css/public.css.PublicCssStyle.css">';
         
         $files = array('Style', 'HomePage', 'Profil', 'Planning');

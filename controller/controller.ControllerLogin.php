@@ -4,7 +4,10 @@ class ControllerLogin
 {
     public static function Page()
     {
-        $title = "test";
+        session_start();
+        session_destroy();
+
+        $title = "Login";
         //$css[0] = '<link rel="stylesheet" type="text/css" href="'. ConfigInterface::APP_DIR .'/public/css/public.css.PublicCssStyle.css">';
         
         $files = array('Style', 'HomePage');
