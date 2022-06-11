@@ -65,8 +65,8 @@
             </div>
         </div>
 
-        <script src="http://localhost:82/git/web_final/public/js/public.js.Const.js"></script>
-        <script src="http://localhost:82/git/web_final/public/js/public.js.Planning.js"></script>
+        <script src="http://localhost/git/web_final/public/js/public.js.Const.js"></script>
+        <script src="http://localhost/git/web_final/public/js/public.js.Planning.js"></script>
 
         <script>
             getClass(<?= $cursus ?>)
