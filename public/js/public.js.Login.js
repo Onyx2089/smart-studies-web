@@ -6,6 +6,8 @@ $("#connect").click(function() {
     {
         $.get(url_web_async + "script.async.Login.php?email=" + email + "&password=" + password, function(data, status) {
 
+            console.log(data)
+            
             if(data == "ADMIN")
             {
                 window.location = url_web + "?p=admin"
