@@ -7,7 +7,14 @@ require_once __DIR__ . '/../../model/class/model.class.ApiCall.php';
 if(isset($_GET['email']) && isset($_GET['password']))
 {
     //echo 'get';
-    $array = ApiCall::get(ApiCall::MODEL_PROFIL, "EMAIL", $_GET['email']);
+    $field = array("EMAIL", "PASSWORD");
+    $op = array("EQ", "EQ");
+    $value = array($_GET['email'], $_GET['password']);
+
+    $array = ApiCall::get(ApiCall::MODEL_PROFIL, $field, $op, $value);
+
+    //print_r($array);
+    //die();
 
     //print_r($res);
     foreach($array as $res)
