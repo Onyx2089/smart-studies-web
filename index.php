@@ -5,6 +5,7 @@ require_once __DIR__ . '/view/link/view.link.LinkClass.php';
 require_once __DIR__ .  '/controller/controller.ControllerLogin.php';
 require_once __DIR__ .  '/controller/controller.ControllerPlanning.php';
 require_once __DIR__ . '/controller/controller.ControllerAdmin.php';
+require_once __DIR__ . '/controller/controller.ControllerAdminDashBoard.php';
 
 if(isset($_GET['p']))
 {
@@ -16,6 +17,10 @@ if(isset($_GET['p']))
     elseif($page == "admin")
     {
         ControllerAdmin::Page();
+    }
+    elseif($page == "dashboard")
+    {
+        ControllerAdminDashBoard::Page();
     }
 }
 else
