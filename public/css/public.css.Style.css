@@ -166,6 +166,11 @@ a:link{
     cursor: pointer;
 }
 
+.idx-999
+{
+    z-index: 999;
+}
+
 /* root */
 
 :root {
