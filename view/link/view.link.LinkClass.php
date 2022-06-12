@@ -3,37 +3,72 @@
 require_once __DIR__ . '/../../config/config.ConfigInterface.php';
 require_once __DIR__ . '/view.link.LinkInterface.php';
 
-class LinkClass
+class LinkClass implements LinkInterface
 {
-    public static function checkCssLink($files)
+    public static function checkLink($files, $type)
     {
         $res = array(); 
         if(is_array($files))
         {
-            foreach($files as $file)
+            if(is_int($type))
             {
-                //echo LinkInterface::DIR_CSS . $file . LinkInterface::BASENAME_CSS;
-
-                if(file_exists(sprintf(LinkInterface::DIR_CSS, $file)))
+                if($type == self::TYPE_CSS)
                 {
-                    $res[] = sprintf(LinkInterface::DIR_CSS_CONFIG, $file);
+                    $dir = self::DIR_CSS;
+                    $dir_config = self::DIR_CSS_CONFIG;
                 }
+                elseif($type == self::TYPE_JS)
+                {
+                    $dir = self::DIR_JS;
+                    $dir_config = self::DIR_JS_CONFIG;
+                }
+
+                if(isset($dir) && isset($dir_config))
+                {
+                    foreach($files as $file)
+                    {
+                        //echo LinkInterface::DIR_CSS . $file . LinkInterface::BASENAME_CSS;
+
+                        if(file_exists(sprintf($dir, $file)))
+                        {
+                            $res[] = sprintf($dir_config, $file);
+                        }
+                    }
+                }
+           
             }
         }
         return $res;
     }
 
-    public static function getCssLink($files)
+    public static function getLink($files, $type)
     {
         $res = array();
 
         if(is_array($files))
         {
-            if(sizeof($files) != 0)
+            if(is_int($type))
             {
-                foreach($files as $file)
+                if($type == self::TYPE_CSS)
                 {
-                    echo sprintf(LinkInterface::TAG_CSS, $file) . PHP_EOL;
+                    $tag = self::TAG_CSS;
+                }
+                elseif($type == self::TYPE_JS)
+                {
+                    $tag = self::TAG_JS;
+                    //print_r($files);
+                }
+
+                if(sizeof($files) != 0)
+                {
+                    if(isset($type))
+                    {
+                        foreach($files as $file)
+                        {
+                            echo sprintf($tag, $file) . PHP_EOL;
+                            //echo "alert($file)";
+                        }
+                    }
                 }
             }
         }
