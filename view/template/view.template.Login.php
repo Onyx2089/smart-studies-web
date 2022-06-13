@@ -27,7 +27,7 @@
             </div>
             <div class="connect-block wid-100 f f1 flex-col ai-center">
                 <div class="connect three-b f jc-center ai-center brd-40 wid-10 hei-23">
-                    <a id="connect" class="ptr" style="background-color:blue;">
+                    <a id="connect" class="ptr">
                         <span class="connect-text ft-1_5 one-f">Se connecter</span>
                     </a>
                 </div>

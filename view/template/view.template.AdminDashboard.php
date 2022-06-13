@@ -12,8 +12,13 @@
         <div class="pic-name f flex-col ai-center jc-center f1">
             <span class="one-f ft-1_5"><?= $model ?></span>
         </div>
+        
+        <div class="data f flex-col f5 two-b op-02">
+            <?= $content ?>
+        </div>
 
-        <?php print_r($content); ?>
+        <!--<?php print_r($content); ?>-->
+
         <!--
         <div class="data f flex-col f5 two-b op-02">
 
