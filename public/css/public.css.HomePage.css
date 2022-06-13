@@ -40,7 +40,9 @@
     width: 18%;
 }
 
-
+.wid-100{
+    width: 100%;
+}
 
 .hei-23{
     height: 23%;
