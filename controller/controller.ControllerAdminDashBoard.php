@@ -45,22 +45,19 @@ class ControllerAdminDashBoard
                 }
                 else
                 {
-                    require_once __DIR__ . '/../view/template/view.template.Login.php';
+                    ControllerLogin::Page();
                 }
             }
             else
             {
-                require_once __DIR__ . '/../view/template/view.template.Login.php';
+                ControllerLogin::Page();
             }
 
 
         }
         else
         {
-            $js = array('Global', 'Login');
-            $js = LinkClass::checkLink($js, LinkClass::TYPE_JS);
-
-            require_once __DIR__ . '/../view/template/view.template.Login.php';
+            ControllerLogin::Page();
         }
 
     }
