@@ -24,6 +24,7 @@ interface IModel
     
     const NAME = "NAME";
     const CURSUS = "CURSUS";
+    const STAT = "STAT";
 
     /**
      * 
@@ -79,7 +80,8 @@ interface IModel
         self::CLASS_NBR_CLASS => array(self::STR, "Nom de la salle"),
         self::CLASS_TIME => array(self::DATETIME, "Date et horaires"),
         self::CLASS_DURATION => array(self::INT, "Durée du cours"),
-        self::CURSUS => array(self::ARRAY, self::ARRAY_CURSUS)
+        self::CURSUS => array(self::ARRAY, "Cursus", self::ARRAY_CURSUS),
+        self::STAT => array(self::ARRAY, "Statut", self::ARRAY_STAT)
     ];
 
     /**
