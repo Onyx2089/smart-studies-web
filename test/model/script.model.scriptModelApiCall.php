@@ -29,7 +29,7 @@ elseif($argv[1] == $array[1])
 {
     $url = "http://localhost/git/api_final/?model=profil";
     
-    $data = array('NAME' => 'Issam', 'BIRTH' => '1990-01-06', 'EMAIL' => 'issam@ecole-89.com', 'CURSUS' => 3000, 'STAT' => 1000);
+    $data = array('NAME' => 'Issam', 'BIRTH' => '1990-01-06', 'EMAIL' => 'issam@ecole-89.com','PASSWORD' => 'azerty', 'CURSUS' => 2000, 'STAT' => 1000);
 
     curl_setopt($curl, CURLOPT_URL, $url);
     curl_setopt($curl, CURLOPT_POST, true);
