@@ -171,6 +171,10 @@ a:link{
     z-index: 999;
 }
 
+.wsn{
+    white-space: nowrap;
+}
+
 /* root */
 
 :root {
