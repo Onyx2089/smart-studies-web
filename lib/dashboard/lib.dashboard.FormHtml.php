@@ -7,11 +7,11 @@ class FormHtml implements IFormHtml, IModel
 {
     public static function getCreateForm($array)
     {
-        $html = sprintf(self::SELECT_TYPE, self::BTN, '');
+        $html = self::selectBtn(self::TYPE_CREATE);
         
-        $content = self::getFormInput($array);
+        $content = self::getCreateInput($array);
 
-        $html .= sprintf(self::CONTAINER, $content);
+        $html .= sprintf(self::CONTAINER_COL, $content);
 
         //return print_r($array);
 
@@ -20,13 +20,30 @@ class FormHtml implements IFormHtml, IModel
 
     public static function getModifForm($array)
     {
-        $html = sprintf(self::SELECT_TYPE, '', self::BTN);
-        $html .= self::CONTAINER;
+        $html = self::selectBtn(self::TYPE_MODIF);
+
+        $search = sprintf(self::SEARCH_HEAD, self::getList($array), sprintf(self::INPUT, self::INPUT_TEXT, "..."));
+
+        $left =  $search . sprintf(self::LIST_MODEL, sprintf(self::LIST_ELEM, "rien de trouvé"));
+        $left = sprintf(self::BLOCK, $left);
+
+        $update = '';
+        foreach($array as $value)
+        {
+            $update .= sprintf(self::UPDATE_ELEM, $value[1] . ":  ...");
+        }
+        $update .= self::UPDATE_BLOCK;
+
+        $right = sprintf(self::UPDATE_LIST, $update);
+
+        $right =  sprintf(self::BLOCK, $right);
+
+        $html .= sprintf(self::CONTAINER_ROW, $left . $right);
 
         return $html;
     }
 
-    public static function getFormInput($array)
+    public static function getCreateInput($array)
     {
         $content = '';
         foreach($array as $key => $field)
@@ -56,7 +73,7 @@ class FormHtml implements IFormHtml, IModel
                     $options .= sprintf(self::OPTION, $value);
                 }
 
-                $input .= $field[1] . " :" . $list . sprintf(self::DATALIST, $key, $options);
+                $input = $field[1] . " :" . $list . sprintf(self::DATALIST, $key, $options);
             }
             
             if($input != false)
@@ -68,5 +85,30 @@ class FormHtml implements IFormHtml, IModel
         $content .= self::VALIDATE;
 
         return $content;
+    }
+
+    public static function selectBtn($type)
+    {
+        if($type == self::TYPE_CREATE)
+        {
+            return $html = sprintf(self::SELECT_TYPE, self::BTN, '');
+        }
+        elseif($type == self::TYPE_MODIF)
+        {
+            return sprintf(self::SELECT_TYPE, '', self::BTN);
+        }
+    }
+
+    public static function getList($array)
+    {
+        $list = sprintf(self::LIST, self::DATALIST_NAME);
+        $options = '';
+
+        foreach($array as $value)
+        {
+            $options .= sprintf(self::OPTION, $value[1]);
+        }
+        
+        return $list . sprintf(self::DATALIST, self::DATALIST_NAME, $options);
     }
 }
