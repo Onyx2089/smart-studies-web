@@ -5,7 +5,13 @@ const type = params.get("type")
 const create = '#create'
 const modif = '#modif'
 
-//alert(type)
+const clas = "class"
+const profil = "profil"
+const project = "project"
+
+const url_insert = url_web_async + "script.async.InsertModel.php"
+
+// type //
 
 if(type == "create")
 {
@@ -24,4 +30,140 @@ else if(type == "modif")
     $(create).click(function() {
         location.href = "?p=dashboard&model=" + model + "&type=create"
     })
+}
+
+
+// model //
+
+
+if(model == clas)
+{
+
+    if(type == 'create')
+    {
+        $('#createBtn').click(function() {
+            var bool = 0;
+            var array = ['name', 'nbr_class', 'time', 'duration', 'cursus_list']
+            
+            $.each(array, function(key, value) {
+                //alert( value );
+                bool += checkError(value)
+            })
+
+            if(bool == 5)
+            {
+                const URL_CONSCRUCT = new URL(url_insert)
+
+                URL_CONSCRUCT.searchParams.append("model", "class")
+                $.each(array, function(key, value) {
+                    URL_CONSCRUCT.searchParams.append(value, $('#' + value).val())
+                })
+
+                //alert(URL_CONSCRUCT.href)
+                $.get(URL_CONSCRUCT.href, function(data, status) {
+                    console.log(data)
+                })        
+            }
+
+        })
+    }
+    else if(type == model)
+    {
+
+    }
+
+}
+else if(model == profil)
+{
+    if(type == 'create')
+    {
+        $('#createBtn').click(function() {
+            var bool = 0;
+            var array = ['name', 'birth', 'email', 'stat_list', 'cursus_list']
+            
+            $.each(array, function(key, value) {
+                //alert( value );
+                bool += checkError(value)
+            })
+
+            if(bool == 5)
+            {
+                const URL_CONSCRUCT = new URL(url_insert)
+
+                URL_CONSCRUCT.searchParams.append("model", "profil")
+                $.each(array, function(key, value) {
+                    URL_CONSCRUCT.searchParams.append(value, $('#' + value).val())
+                })
+
+                //alert(URL_CONSCRUCT.href)
+                $.get(URL_CONSCRUCT.href, function(data, status) {
+                    console.log(data)
+                })
+            }
+
+        })
+    }
+    else if(type == model)
+    {
+        
+    }
+
+}
+else if(model == project)
+{
+
+    if(type == 'create')
+    {
+        $('#createBtn').click(function() {
+            var bool = 0;
+            var array = ['name', 'deadline', 'cursus_list']
+            
+            $.each(array, function(key, value) {
+                //alert( value );
+                bool += checkError(value)
+            })
+
+            if(bool == 3)
+            {
+                const URL_CONSCRUCT = new URL(url_insert)
+
+                URL_CONSCRUCT.searchParams.append("model", "project")
+                $.each(array, function(key, value) {
+                    URL_CONSCRUCT.searchParams.append(value, $('#' + value).val())
+                })
+
+                //alert(URL_CONSCRUCT.href)
+                $.get(URL_CONSCRUCT.href, function(data, status) {
+                    console.log(status)
+                    console.log(data)
+                })
+            }
+
+        })
+    }
+    else if(type == model)
+    {
+        
+    }
+
+}
+
+function checkError(field) 
+{ 
+    var data = $("#" + field).val()
+
+    if(data == "")
+    {
+        //alert("Name undefined")
+        $("#" + field).attr("placeholder", field + " missing")
+        $("#" + field).css("background-color", "red")
+
+        return false
+    }
+    else
+    {
+        $("#" + field).css("background-color", "")
+        
+        return true
+    }
 }
