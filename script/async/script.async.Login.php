@@ -19,8 +19,10 @@ if(isset($_GET['email']) && isset($_GET['password']))
     //print_r($res);
     foreach($array as $res)
     {
+        //var_export($res->PASSWORD == $_GET['password']);
         if($res->PASSWORD == $_GET['password'])
         {
+            //echo 'here';
             //print_r($res);
             $stat = $res->STAT;
             if($stat == 1000)

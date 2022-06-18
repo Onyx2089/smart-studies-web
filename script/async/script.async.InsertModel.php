@@ -5,6 +5,7 @@ require_once __DIR__ . '/../../model/class/model.class.ApiCall.php';
 require_once __DIR__ . '/../../model/interface/model.Interface.ModelClass.php';
 require_once __DIR__ . '/../../model/interface/model.interface.ModelProfil.php';
 require_once __DIR__ . '/../../model/interface/model.Interface.ModelProject.php';
+require_once __DIR__ . '/../../lib/generator/lib.generator.Rand.php';
 
 
 if(isset($_GET['model']))
@@ -25,11 +26,13 @@ if(isset($_GET['model']))
             elseif($model == IModel::MODEL_PROFIL)
             {
                 $field = ModelProfil::PROFIL_ARRAY;
+                $value[] = Rand::password(20);
             }
             elseif($model == IModel::MODEL_PROJECT)
             {
                 $field = ModelProject::PROJECT_ARRAY;
             } 
+
 
             if(isset($field))
             {
@@ -59,13 +62,15 @@ if(isset($_GET['model']))
                             $array[] = $row;
                         }
                     }
-                    
+                
+                    //print_r(array( $field, $array) );
+                    //die();
                     //print_r( array($field, $array));
                     $res = ApiCall::post($model, $field, $array);
                 
                     if($res != null)
                     {
-                        print_r($res);
+                        echo $res;
                     }
                 }
             }
