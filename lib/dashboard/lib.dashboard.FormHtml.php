@@ -22,7 +22,7 @@ class FormHtml implements IFormHtml, IModel
     {
         $html = self::selectBtn(self::TYPE_MODIF);
 
-        $search = sprintf(self::SEARCH_HEAD, self::getList($array), sprintf(self::INPUT, self::INPUT_TEXT, "..."));
+        $search = sprintf(self::SEARCH_HEAD, self::getList($array), sprintf(self::INPUT, self::INPUT_TEXT, self::INPUT_TEXT, "..."));
 
         $left =  $search . sprintf(self::LIST_MODEL, sprintf(self::LIST_ELEM, "rien de trouvé"));
         $left = sprintf(self::BLOCK, $left);
@@ -52,20 +52,24 @@ class FormHtml implements IFormHtml, IModel
 
             if($field[0] == self::STR)
             {
-                $input = $field[1] . " :" . sprintf(self::INPUT, self::INPUT_TEXT, "...");
+                $input = $field[1] . " :" . sprintf(self::INPUT, strtolower($key), self::INPUT_TEXT, "...");
                 //$input = sprintf("<span>%s</span>", $input);
             }
             elseif($field[0] == self::INT)
             {
-                $input = $field[1] . " :" . sprintf(self::INPUT, self::INPUT_NBR, "...") . "minutes";
+                $input = $field[1] . " :" . sprintf(self::INPUT, strtolower($key), self::INPUT_NBR, "...") . "minutes";
+            }
+            elseif($field[0] == self::DATE)
+            {
+                $input = $field[1] . " :" . sprintf(self::INPUT, strtolower($key), self::INPUT_DATE, "...");
             }
             elseif($field[0] == self::DATETIME)
             {
-                $input = $field[1] . " :" . sprintf(self::INPUT, self::INPUT_DATETIME, "...");
+                $input = $field[1] . " :" . sprintf(self::INPUT, strtolower($key), self::INPUT_DATETIME, "...");
             }
             elseif($field[0] == self::ARRAY)
             {
-                $list = sprintf(self::LIST, $key);
+                $list = sprintf(self::LIST, strtolower($key), strtolower($key));
                 $options = '';
 
                 foreach($field[2] as $value)
@@ -73,7 +77,7 @@ class FormHtml implements IFormHtml, IModel
                     $options .= sprintf(self::OPTION, $value);
                 }
 
-                $input = $field[1] . " :" . $list . sprintf(self::DATALIST, $key, $options);
+                $input = $field[1] . " :" . $list . sprintf(self::DATALIST, strtolower($key), $options);
             }
             
             if($input != false)
@@ -101,7 +105,10 @@ class FormHtml implements IFormHtml, IModel
 
     public static function getList($array)
     {
-        $list = sprintf(self::LIST, self::DATALIST_NAME);
+
+        //echo self::LIST;
+        //die();
+        $list = sprintf(self::LIST, self::DATALIST_NAME, self::DATALIST_NAME);
         $options = '';
 
         foreach($array as $value)

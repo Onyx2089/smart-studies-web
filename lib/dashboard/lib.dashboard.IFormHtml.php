@@ -11,20 +11,21 @@ interface IFormHtml
     const CONTAINER_COL = '<div class="f flex-col f7"> %s </div>';
     const CONTAINER_ROW = '<div class="f flex-row f7"> %s </div>';
     const DIV_FIELD = '<div class="one f ai-center jc-center f1 wsn">  <span class="f ai-center jc-center ft-1_8 one-f"> %s </span> </div>';
-    const VALIDATE = '<div class="four f ai-center jc-center f1"> <div class="btn-validate f flex-col ai-center jc-center"> <span class="one-f ft-1">Créer</span> </div> </div>';
+    const VALIDATE = '<div class="four f ai-center jc-center f1"> <div id="createBtn" class="btn-validate f flex-col ai-center jc-center"> <span class="one-f ft-1">Créer</span> </div> </div>';
 
     /**
      * 
      */
 
-    const INPUT = '<input type="%s" class="input-t ft-1_5 one-f mrg-left-10 it" placeholder="%s">';
+    const INPUT = '<input id="%s" type="%s" class="input-t ft-1_5 one-f mrg-left-10 it" placeholder="%s">';
 
     const INPUT_TEXT = "text";
     const INPUT_EMAIL = "email";
     const INPUT_NBR = "number";
+    const INPUT_DATE = "date";
     const INPUT_DATETIME = "datetime-local";
 
-    const LIST = '<input class="wid-100" list="%s">';
+    const LIST = '<input id="%s_list" class="wid-100" list="%s">';
     const DATALIST = '<datalist id="%s">%s</datalist>';
     const OPTION = '<option value="%s">';
 
