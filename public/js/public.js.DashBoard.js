@@ -10,6 +10,7 @@ const profil = "profil"
 const project = "project"
 
 const url_insert = url_web_async + "script.async.InsertModel.php"
+const url_search = url_web_async + "script.async.SearchModel.php"
 
 // type //
 
@@ -105,6 +106,7 @@ else if(model == profil)
                 if(confirm("create " + model))
                 {
                     $.get(URL_CONSCRUCT.href, function(data, status) {
+                        console.log(data)
                         if(status == "success")
                         {
                             location.href = "?p=admin"
@@ -144,24 +146,51 @@ else if(model == project)
                     URL_CONSCRUCT.searchParams.append(value, $('#' + value).val())
                 })
 
-                //alert(URL_CONSCRUCT.href)
-                if(confirm("create " + model))
-                {
-                    $.get(URL_CONSCRUCT.href, function(data, status) {
-                        if(status == "success")
-                        {
-                            location.href = "?p=admin"
-                        }
-                    })
-                }
-         
+                $.get(URL_CONSCRUCT.href, function(data, status) {
+                    if(status == "success")
+                    {
+                        location.href = "?p=admin"
+                    }
+                })
             }
 
         })
     }
-    else if(type == model)
+    else if(type == 'modif')
     {
+        $('#search').css('cursor', 'pointer')
+
+        $('#search').click(function() {
+            //alert('here')
+
+            var bool = 0;
+            var array = ['datalist_list', 'text']
         
+            $.each(array, function(key, value) {
+                //alert( value );
+                bool += checkError(value)
+            })
+            
+            if(bool == 2)
+            {
+                const URL_CONSCRUCT = new URL(url_search)
+
+                URL_CONSCRUCT.searchParams.append("model", "project")
+                $.each(array, function(key, value) {
+                    URL_CONSCRUCT.searchParams.append(value, $('#' + value).val())
+                })
+
+                
+                //alert(URL_CONSCRUCT.href)
+                $.get(URL_CONSCRUCT.href, function(data, status) {
+                    alert(data);
+                })
+                
+            }
+
+        })   
+
+
     }
 
 }
