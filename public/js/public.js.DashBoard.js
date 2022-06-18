@@ -60,9 +60,15 @@ if(model == clas)
                 })
 
                 //alert(URL_CONSCRUCT.href)
-                $.get(URL_CONSCRUCT.href, function(data, status) {
-                    console.log(data)
-                })        
+                if(confirm("create " + model))
+                {
+                    $.get(URL_CONSCRUCT.href, function(data, status) {
+                        if(status == "success")
+                        {
+                            location.href = "?p=admin"
+                        }
+                    })
+                }       
             }
 
         })
@@ -96,9 +102,15 @@ else if(model == profil)
                 })
 
                 //alert(URL_CONSCRUCT.href)
-                $.get(URL_CONSCRUCT.href, function(data, status) {
-                    console.log(data)
-                })
+                if(confirm("create " + model))
+                {
+                    $.get(URL_CONSCRUCT.href, function(data, status) {
+                        if(status == "success")
+                        {
+                            location.href = "?p=admin"
+                        }
+                    })
+                }
             }
 
         })
@@ -133,10 +145,16 @@ else if(model == project)
                 })
 
                 //alert(URL_CONSCRUCT.href)
-                $.get(URL_CONSCRUCT.href, function(data, status) {
-                    console.log(status)
-                    console.log(data)
-                })
+                if(confirm("create " + model))
+                {
+                    $.get(URL_CONSCRUCT.href, function(data, status) {
+                        if(status == "success")
+                        {
+                            location.href = "?p=admin"
+                        }
+                    })
+                }
+         
             }
 
         })
