@@ -30,6 +30,35 @@ class ApiCall implements IApiCall
         return $res;//print_r($res);
     }
 
+    public static function post($table, $field, $value)
+    {
+        $value = array_values($value);
+        //return $value;
+        if(sizeof($field) == sizeof($value))
+        {
+            $array = array();
+            $arrayCount = 0;
+
+            while($arrayCount != sizeof($field))
+            {
+                $array[$field[$arrayCount]] = $value[$arrayCount];
+
+                $arrayCount++;
+            }
+
+            $url = self::URL_API . sprintf("model=%s", $table);
+
+            $curl = curl_init($url);
+            curl_setopt($curl, CURLOPT_POST, true);
+            curl_setopt($curl, CURLOPT_POSTFIELDS, $array);
+
+            $res = self::apiReturn($curl);
+
+            return $res;
+        }
+
+    }
+
     public static function apiReturn($curl)
     {
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
