@@ -80,8 +80,7 @@ interface IModel
         self::CLASS_NBR_CLASS => array(self::STR, "Nom de la salle"),
         self::CLASS_TIME => array(self::DATETIME, "Date et horaires"),
         self::CLASS_DURATION => array(self::INT, "Durée du cours"),
-        self::CURSUS => array(self::ARRAY, "Cursus", self::ARRAY_CURSUS),
-        self::STAT => array(self::ARRAY, "Statut", self::ARRAY_STAT)
+        self::CURSUS => array(self::ARRAY, "Cursus", self::ARRAY_CURSUS)
     ];
 
     /**
@@ -95,12 +94,12 @@ interface IModel
 
     const ARRAY_PROFIL_FIELD = 
     [
-        self::NAME,
-        self::PROFIL_BIRTH,
-        self::PROFIL_EMAIL,
-        self::PROFIL_PASSWORD,
-        self::PROFIL_STAT,
-        self::CURSUS
+        self::NAME => array(self::STR, "Nom - Prénom"),
+        self::PROFIL_BIRTH => array(self::DATE, "Anniversaire"),
+        self::PROFIL_EMAIL => array(self::STR, "Email"),
+        /*self::PROFIL_PASSWORD,*/
+        self::PROFIL_STAT => array(self::ARRAY, "Statut", self::ARRAY_STAT),
+        self::CURSUS => array(self::ARRAY, "Cursus", self::ARRAY_CURSUS)
     ];
 
     /**
@@ -111,8 +110,8 @@ interface IModel
 
     const ARRAY_PROJECT_FIELD = 
     [
-        self::NAME,
-        self::PROJECT_DEADLINE,
-        self::CURSUS
+        self::NAME => array(self::STR, "Nom du projet"),
+        self::PROJECT_DEADLINE => array(self::DATE, "Deadline"),
+        self::CURSUS => array(self::ARRAY, "Cursus", self::ARRAY_CURSUS)
     ];
 }
