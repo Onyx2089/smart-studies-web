@@ -52,8 +52,6 @@ class ControllerAdminDashBoard
             {
                 ControllerLogin::Page();
             }
-
-
         }
         else
         {
