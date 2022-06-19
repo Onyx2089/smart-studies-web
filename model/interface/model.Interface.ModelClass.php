@@ -10,10 +10,10 @@ interface ModelClass
 
     const CLASS_ARRAY = 
     [
-        self::NAME,
-        self::NBR_CLASS,
-        self::TIME,
-        self::DURATION,
-        self::CURSUS
+        "Matière" => self::NAME,
+        "Nom de la salle" => self::NBR_CLASS,
+        "Date et horaires" => self::TIME,
+        "Durée du cours" => self::DURATION,
+        "Cursus" => self::CURSUS
     ];
 }

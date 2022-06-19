@@ -11,11 +11,11 @@ interface ModelProfil
 
     const PROFIL_ARRAY = 
     [
-        self::NAME,
-        self::BIRTH,
-        self::EMAIL,
-        self::STAT,
-        self::CURSUS,
+        "Nom - Prénom" => self::NAME,
+        "Anniversaire" => self::BIRTH,
+        "Email" => self::EMAIL,
+        "Statut" => self::STAT,
+        "Cursus" => self::CURSUS,
         self::PASSWORD
     ];
 }

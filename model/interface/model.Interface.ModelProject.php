@@ -8,8 +8,8 @@ interface ModelProject
 
     const PROJECT_ARRAY = 
     [
-        self::NAME,
-        self::DEAD_LINE,
-        self::CURSUS
+        "Nom du projet" => self::NAME,
+        "Deadline" => self::DEAD_LINE,
+        "Cursus" => self::CURSUS
     ];
 }
