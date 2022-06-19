@@ -38,7 +38,7 @@ interface IFormHtml
     const BLOCK = '<div class="f flex-col f1">%s</div>';
 
     const SEARCH_HEAD = '<div class="f f1"> <div class="f ai-center jc-end f1"> <span class="one-f ft-1_8">%s</span> </div> <div class="f ai-center jc-center f2"> <div class="btn-validate search f flex-col ai-center jc-center three-b"> <span class="one-f ft-1">%s</span> </div> </div> <div class="f ai-center f1"> <div class="f ai-center jc-center"> <i id="search" class="fa fa-search w3-text-teal" style="font-size:64px"></i> </div> </div> </div>';
-    const LIST_MODEL = '<div class="f flex-col ai-center f5"> <div class="f flex-col ai-center scrool-search">%s</div> </div>';
+    const LIST_MODEL = '<div class="f flex-col ai-center f5"> <div id="list_data" class="f flex-col ai-center scrool-search">%s</div> </div>';
     const LIST_ELEM = '<span class="one-f ft-1_5 mrg-top-2">%s</span>';
 
     const UPDATE_BLOCK = '<div class="f f1"> <div class="f ai-center jc-center f1"> <div class="btn-validate search f flex-col ai-center jc-center three-b"> <span class="one-f ft-1">Modifier</span> </div> </div> <div class="f ai-center jc-center f1"> <div class="f ai-center jc-center"> <i class="fa fa-trash w3-text-red" style="font-size:64px"></i> </div> </div>';

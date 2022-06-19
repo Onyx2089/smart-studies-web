@@ -27,11 +27,14 @@ class FormHtml implements IFormHtml, IModel
         $left =  $search . sprintf(self::LIST_MODEL, sprintf(self::LIST_ELEM, "rien de trouvé"));
         $left = sprintf(self::BLOCK, $left);
 
-        $update = '';
-        foreach($array as $value)
+        //$update = '';
+        /*foreach($array as $value)
         {
             $update .= sprintf(self::UPDATE_ELEM, $value[1] . ":  ...");
         }
+        */
+        $update = self::getCreateInput($array, true);
+
         $update .= self::UPDATE_BLOCK;
 
         $right = sprintf(self::UPDATE_LIST, $update);
@@ -43,7 +46,7 @@ class FormHtml implements IFormHtml, IModel
         return $html;
     }
 
-    public static function getCreateInput($array)
+    public static function getCreateInput($array, $bool = false)
     {
         $content = '';
         foreach($array as $key => $field)
@@ -86,7 +89,10 @@ class FormHtml implements IFormHtml, IModel
             }
         }
         
-        $content .= self::VALIDATE;
+        if(!$bool)
+        {
+            $content .= self::VALIDATE;
+        }
 
         return $content;
     }
