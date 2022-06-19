@@ -15,8 +15,8 @@ if(isset($_GET['email']) && isset($_GET['password']))
 
     //print_r($array);
     //die();
-
     //print_r($res);
+
     foreach($array as $res)
     {
         //var_export($res->PASSWORD == $_GET['password']);

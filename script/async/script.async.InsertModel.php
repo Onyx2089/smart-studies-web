@@ -21,18 +21,17 @@ if(isset($_GET['model']))
 
             if($model == IModel::MODEL_CLASS)
             {
-                $field = ModelClass::CLASS_ARRAY;
+                $field = array_values(ModelClass::CLASS_ARRAY);
             }
             elseif($model == IModel::MODEL_PROFIL)
             {
-                $field = ModelProfil::PROFIL_ARRAY;
+                $field = array_values(ModelProfil::PROFIL_ARRAY);
                 $value[] = Rand::password(20);
             }
             elseif($model == IModel::MODEL_PROJECT)
             {
-                $field = ModelProject::PROJECT_ARRAY;
+                $field = array_values(ModelProject::PROJECT_ARRAY);
             } 
-
 
             if(isset($field))
             {
