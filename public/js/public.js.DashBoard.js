@@ -74,9 +74,48 @@ if(model == clas)
 
         })
     }
-    else if(type == model)
+    else if(type == 'modif')
     {
+        $('#search').css('cursor', 'pointer')
 
+        $('#search').click(function() {
+            //alert('here')
+
+            var bool = 0;
+            var array = ['datalist_list', 'text']
+        
+            $.each(array, function(key, value) {
+                //alert( value );
+                bool += checkError(value)
+            })
+            
+            if(bool == 2)
+            {
+                const URL_CONSCRUCT = new URL(url_search)
+
+                URL_CONSCRUCT.searchParams.append("model", "class")
+                $.each(array, function(key, value) {
+                    URL_CONSCRUCT.searchParams.append(value, $('#' + value).val())
+                })
+
+                
+                $.get(URL_CONSCRUCT.href, function(data, status) {
+                    data = JSON.parse(data)
+                    field = data[0]
+                    array = data[1]
+
+                    var text = ""
+
+                    $.each(array, function(key, value) {
+                        text += '<span class="one-f ft-1_5 mrg-top-2">' + value[field] + '</span>'
+                    })
+
+                    $("#list_data").html(text)
+                })
+                
+            }
+
+        })   
     }
 
 }
@@ -117,9 +156,51 @@ else if(model == profil)
 
         })
     }
-    else if(type == model)
+    else if(type == 'modif')
     {
+        $('#search').css('cursor', 'pointer')
+
+        $('#search').click(function() {
+            //alert('here')
+
+            var bool = 0;
+            var array = ['datalist_list', 'text']
         
+            $.each(array, function(key, value) {
+                //alert( value );
+                bool += checkError(value)
+            })
+            
+            if(bool == 2)
+            {
+                const URL_CONSCRUCT = new URL(url_search)
+
+                URL_CONSCRUCT.searchParams.append("model", "profil")
+                $.each(array, function(key, value) {
+                    URL_CONSCRUCT.searchParams.append(value, $('#' + value).val())
+                })
+
+                
+                $.get(URL_CONSCRUCT.href, function(data, status) {
+
+                    console.log(data)
+
+                    data = JSON.parse(data)
+                    field = data[0]
+                    array = data[1]
+
+                    var text = ""
+
+                    $.each(array, function(key, value) {
+                        text += '<span class="one-f ft-1_5 mrg-top-2">' + value[field] + '</span>'
+                    })
+
+                    $("#list_data").html(text)
+                })
+                
+            }
+
+        })   
     }
 
 }
@@ -147,6 +228,7 @@ else if(model == project)
                 })
 
                 $.get(URL_CONSCRUCT.href, function(data, status) {
+                    //alert(data)
                     if(status == "success")
                     {
                         location.href = "?p=admin"
@@ -181,9 +263,18 @@ else if(model == project)
                 })
 
                 
-                //alert(URL_CONSCRUCT.href)
                 $.get(URL_CONSCRUCT.href, function(data, status) {
-                    alert(data);
+                    data = JSON.parse(data)
+                    field = data[0]
+                    array = data[1]
+
+                    var text = ""
+
+                    $.each(array, function(key, value) {
+                        text += '<span class="one-f ft-1_5 mrg-top-2">' + value[field] + '</span>'
+                    })
+
+                    $("#list_data").html(text)
                 })
                 
             }
