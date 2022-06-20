@@ -54,6 +54,12 @@ interface IModel
         self::STAT_STUDENT => self::STUDENT
     ];
 
+    const ARRAY_STAT_REV = 
+    [
+        self::ADMIN => self::STAT_ADMIN,
+        self::STUDENT => self::STAT_STUDENT
+    ];
+
     const CURSUS_PRG = 3000;
     const CURSUS_MKT = 4000;
 
@@ -64,6 +70,12 @@ interface IModel
     [
         self::CURSUS_PRG => self::PRG,
         self::CURSUS_MKT => self::MKT
+    ];
+
+    const ARRAY_CURSUS_REV = 
+    [
+        self::PRG => self::CURSUS_PRG,
+        self::MKT => self::CURSUS_MKT
     ];
 
     /**

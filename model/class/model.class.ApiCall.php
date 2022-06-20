@@ -59,6 +59,83 @@ class ApiCall implements IApiCall
 
     }
 
+    public static function put($table, $id, $field, $value)
+    {
+        //return array($field, $value);
+        if(sizeof($field) == sizeof($value) || $table == IModel::MODEL_PROFIL && sizeof($field) == sizeof($value) + 1)
+        {
+            //return 'hey';
+            $field = array_values($field);
+            $value = array_values($value);
+
+            $listCount = 0;
+            $list = array();
+
+            while($listCount != sizeof($value))
+            {
+                //echo $field[$listCount] . ' : ' . $value[$listCount] . PHP_EOL;
+                $list[$field[$listCount]] = $value[$listCount];
+                $listCount++;
+            }
+
+            $array = array();
+
+            foreach($list as $key => $data)
+            {
+                if($key == IModel::CURSUS)
+                {
+                    $array[$key] = IModel::ARRAY_CURSUS_REV[$data];
+                }
+                elseif($key == IModel::STAT)
+                {
+                    $array[$key] = IModel::ARRAY_STAT_REV[$data];
+                }
+                else
+                {
+                    $array[$key] = $data;
+                }
+            }
+
+            $array['ID'] = $id;
+            //print_r($array);
+            //die();
+
+            
+            $url = self::URL_API . "model=$table&" . http_build_query($array, JSON_FORCE_OBJECT);
+
+            //echo $url . "<- url";
+            //return $url;
+
+            //die();
+            $curl = curl_init($url);
+            curl_setopt($curl, CURLOPT_PUT, true);
+
+            $res = self::apiReturn($curl);
+
+            return $res;
+            //print_r($list);
+        }
+    }
+
+    public static function delete($table,  $id)
+    {
+        $array = array();
+
+        $array['model'] = $table;
+        $array['ID'] = $id;
+
+        $url = self::URL_API . http_build_query($array, JSON_FORCE_OBJECT);
+
+        //return $url;
+
+        $curl = curl_init($url);
+        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "DELETE");
+
+        $res = self::apiReturn($curl);
+
+        return $res;
+    }
+
     public static function apiReturn($curl)
     {
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
