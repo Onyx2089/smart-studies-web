@@ -6,7 +6,7 @@ require_once __DIR__ . '/../../model/interface/model.Interface.ModelClass.php';
 require_once __DIR__ . '/../../model/interface/model.interface.ModelProfil.php';
 require_once __DIR__ . '/../../model/interface/model.Interface.ModelProject.php';
 require_once __DIR__ . '/../../lib/generator/lib.generator.Rand.php';
-
+require_once __DIR__ . '/../../lib/send/lib.send.Email.php';
 
 if(isset($_GET['model']))
 {
@@ -69,6 +69,12 @@ if(isset($_GET['model']))
                 
                     if($res != null)
                     {
+                        print_r($array);
+
+                        $Email = new Email;
+
+                        var_export( $Email::send() );
+
                         echo $res;
                     }
                 }
