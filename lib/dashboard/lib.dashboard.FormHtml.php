@@ -35,6 +35,8 @@ class FormHtml implements IFormHtml, IModel
         */
         $update = self::getCreateInput($array, true);
 
+        $update .= self::HIDDEN_ID;
+
         $update .= self::UPDATE_BLOCK;
 
         $right = sprintf(self::UPDATE_LIST, $update);

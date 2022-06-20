@@ -41,8 +41,8 @@ interface IFormHtml
     const LIST_MODEL = '<div class="f flex-col ai-center f5"> <div id="list_data" class="f flex-col ai-center scrool-search">%s</div> </div>';
     const LIST_ELEM = '<span class="one-f ft-1_5 mrg-top-2">%s</span>';
 
-    const UPDATE_BLOCK = '<div class="f f1"> <div class="f ai-center jc-center f1"> <div class="btn-validate search f flex-col ai-center jc-center three-b"> <span class="one-f ft-1">Modifier</span> </div> </div> <div class="f ai-center jc-center f1"> <div class="f ai-center jc-center"> <i class="fa fa-trash w3-text-red" style="font-size:64px"></i> </div> </div>';
+    const UPDATE_BLOCK = '<div class="f f1"> <div class="f ai-center jc-center f1"> <div id="modifBtn" class="btn-validate search f flex-col ai-center jc-center three-b"> <span class="one-f ft-1">Modifier</span> </div> </div> <div class="f ai-center jc-center f1"> <div class="f ai-center jc-center"> <i id="deleteBtn" class="fa fa-trash w3-text-red" style="font-size:64px"></i> </div> </div>';
     const UPDATE_LIST = '<div class="f flex-col f5">%s</div>';
     const UPDATE_ELEM = '<div class="one f ai-center jc-center f1"> <span class="f ai-center jc-center ft-1_8 one-f">%s</span> </div>';
-
+    const HIDDEN_ID = '<input type="hidden" id="idHidden">';
 }
