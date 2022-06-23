@@ -1,3 +1,6 @@
+*{
+    font-family: var(--font);
+}
 
 body{
     margin: 0;
@@ -135,6 +138,15 @@ a:link{
     color: var(--two);
 }
 
+.wrg-f{
+    color: var(--warning);
+}
+
+.err-f{
+    color: var(--error);
+}
+
+
 .three-f{
     color: var(--three);
 }
@@ -178,8 +190,18 @@ a:link{
 /* root */
 
 :root {
-    --font: 'Sofia';
+    --font: cursive;
+    /*
     --one: #17604B;
     --two: #A6EAD6;
     --three: #75DEC1;
+    --warning: #EC7D10;
+    --error: #FF0000;
+    */
+
+    --one: #17604B;
+    --two: #A6EAD6;
+    --three: #75DEC1;
+    --warning: #F18701;
+    --error: #F42C04;
 }

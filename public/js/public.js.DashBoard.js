@@ -2,444 +2,101 @@ const params = new URLSearchParams(window.location.search);
 const model = params.get("model")
 const type = params.get("type")
 
-const create = '#create'
-const modif = '#modif'
+const create_ = 'create'
+const modif_ = 'modif'
 
-const clas = "class"
-const profil = "profil"
-const project = "project"
+const class_ = "class"
+const profil_ = "profil"
+const project_ = "project"
 
-const url_insert = url_web_async + "script.async.InsertModel.php"
-const url_search = url_web_async + "script.async.SearchModel.php"
-const url_update = url_web_async + "script.async.Update.php"
-const url_delete = url_web_async + "script.async.DeleteModel.php"
+const search_ = "search"
+
+const url_insert_ = url_web_async + "script.async.InsertModel.php"
+const url_search_ = url_web_async + "script.async.SearchModel.php"
+const url_update_ = url_web_async + "script.async.Update.php"
+const url_delete_ = url_web_async + "script.async.DeleteModel.php"
+
+//      //
+
+const cursor_ = 'cursor' 
+const not_allowed_ = 'not-allowed'
+const pointer_ = 'pointer'
 
 // type //
 
-if(type == "create")
+if(type == create_)
 {
-    $(create).css('cursor', 'not-allowed')
-    $(modif).css('cursor', 'pointer')
+    $('#' + create_).css(cursor_, not_allowed_)
+    $('#' + modif_).css(cursor_, pointer_)
 
-    $(modif).click(function() {
+    $('#' + modif_).click(function() {
         location.href = "?p=dashboard&model=" + model + "&type=modif"
     })
 }
-else if(type == "modif")
+else if(type == modif_)
 {
-    $(modif).css('cursor', 'not-allowed')
-    $(create).css('cursor', 'pointer')
+    $('#' + modif_).css(cursor_, not_allowed_)
+    $('#' + create_).css(cursor_, pointer_)
 
-    $('#modifBtn').css('cursor', 'not-allowed')
-    $('#deleteBtn').css('cursor', 'not-allowed')
+    $('#modifBtn').css(cursor_, not_allowed_)
+    $('#deleteBtn').css(cursor_, not_allowed_)
 
-    $(create).click(function() {
+    $('#' + create_).click(function() {
         location.href = "?p=dashboard&model=" + model + "&type=create"
     })
 }
 
-
 // model //
 
 
-if(model == clas)
+if(model == class_)
 {
     var array = ['name', 'nbr_class', 'time', 'duration', 'cursus_list']
 
-    if(type == 'create')
+    if(type == create_)
     {
-        $('#createBtn').click(function() {
-            var bool = 0;
-            
-            $.each(array, function(key, value) {
-                //alert( value );
-                bool += checkError(value)
-            })
-
-            if(bool == 5)
-            {
-                const URL_CONSCRUCT = new URL(url_insert)
-
-                URL_CONSCRUCT.searchParams.append("model", "class")
-                $.each(array, function(key, value) {
-                    URL_CONSCRUCT.searchParams.append(value, $('#' + value).val())
-                })
-
-                //alert(URL_CONSCRUCT.href)
-                if(confirm("create " + model))
-                {
-                    $.get(URL_CONSCRUCT.href, function(data, status) {
-                        if(status == "success")
-                        {
-                            location.href = "?p=admin"
-                        }
-                    })
-                }       
-            }
-
-        })
+        createBtn()
     }
-    else if(type == 'modif')
+    else if(type == modif_)
     {
-        $('#search').css('cursor', 'pointer')
+        $('#' + search_).css(cursor_, pointer_)
 
-        $('#search').click(function() {
-            //alert('here')
-
-            var bool = 0;
-            var array = ['datalist_list', 'text']
-        
-            $.each(array, function(key, value) {
-                //alert( value );
-                bool += checkError(value)
-            })
-            
-            if(bool == 2)
-            {
-                const URL_CONSCRUCT = new URL(url_search)
-
-                URL_CONSCRUCT.searchParams.append("model", "class")
-                $.each(array, function(key, value) {
-                    URL_CONSCRUCT.searchParams.append(value, $('#' + value).val())
-                })
-
-                
-                $.get(URL_CONSCRUCT.href, function(data, status) {
-                    data = JSON.parse(data)
-                    field = data[0]
-                    array = data[1]
-
-                    var text = ""
-
-                    $.each(array, function(key, value) {
-                        text += '<span onclick="fillModif(\'class\', ' + value['ID'] + ')" class="one-f ft-1_5 mrg-top-2">' + value[field] + '</span>'
-                    })
-
-                    $("#list_data").html(text)
-                })
-                
-            }
-
-        }) 
-        
-        $('#modifBtn').click(function() {
-            
-            //alert('here')
-            var bool = 0;
-            
-            $.each(array, function(key, value) {
-                //alert( value );
-                bool += checkError(value)
-            })
-
-            
-            if(bool == 5)
-            {
-                //alert('perfect')
-                
-                const URL_CONSCRUCT = new URL(url_update)
-                
-                URL_CONSCRUCT.searchParams.append("model", "class")
-                URL_CONSCRUCT.searchParams.append("ID",  $('#idHidden').val())
-                $.each(array, function(key, value) {
-                    URL_CONSCRUCT.searchParams.append(value, $('#' + value).val())
-                })
-
-                //alert(URL_CONSCRUCT.href)
-                
-                $.get(URL_CONSCRUCT.href, function(data, status) {
-                    alert(data)
-                })
-                
-            }
-        })
-
-        $('#deleteBtn').click(function() {
-            //alert('here')
-            const URL_CONSCRUCT = new URL(url_delete)
-                
-            URL_CONSCRUCT.searchParams.append("model", "class")
-            URL_CONSCRUCT.searchParams.append("ID",  $('#idHidden').val())
-
-            if(confirm("delete ?"))
-            {
-                $.get(URL_CONSCRUCT.href, function(data, status) {
-                    alert(data)
-                    //alert('boo')
-                })
-            }
-        })
+        modifType()
 
     }
 
 }
-else if(model == profil)
+else if(model == profil_)
 {
     var array = ['name', 'birth', 'email', 'stat_list', 'cursus_list']
 
-    if(type == 'create')
+    if(type == create_)
     {
-        $('#createBtn').click(function() {
-            var bool = 0;
-            
-            $.each(array, function(key, value) {
-                //alert( value );
-                bool += checkError(value)
-            })
-
-            if(bool == 5)
-            {
-                const URL_CONSCRUCT = new URL(url_insert)
-
-                URL_CONSCRUCT.searchParams.append("model", "profil")
-                $.each(array, function(key, value) {
-                    URL_CONSCRUCT.searchParams.append(value, $('#' + value).val())
-                })
-
-                //alert(URL_CONSCRUCT.href)
-                if(confirm("create " + model))
-                {
-                    $.get(URL_CONSCRUCT.href, function(data, status) {
-                        console.log(data)
-                        /*
-                        if(status == "success")
-                        {
-                            location.href = "?p=admin"
-                        }
-                        */
-                    })
-                }
-            }
-
-        })
+        createBtn()
     }
-    else if(type == 'modif')
+    else if(type == modif_)
     {
-        $('#search').css('cursor', 'pointer')
+        $('#' + search_).css(cursor_, pointer_)
 
-        $('#search').click(function() {
-            //alert('here')
-
-            var bool = 0;
-            var array = ['datalist_list', 'text']
-        
-            $.each(array, function(key, value) {
-                //alert( value );
-                bool += checkError(value)
-            })
-            
-            if(bool == 2)
-            {
-                const URL_CONSCRUCT = new URL(url_search)
-
-                URL_CONSCRUCT.searchParams.append("model", "profil")
-                $.each(array, function(key, value) {
-                    URL_CONSCRUCT.searchParams.append(value, $('#' + value).val())
-                })
-
-                
-                $.get(URL_CONSCRUCT.href, function(data, status) {
-
-                    console.log(data)
-
-                    data = JSON.parse(data)
-                    field = data[0]
-                    array = data[1]
-
-                    var text = ""
-
-                    $.each(array, function(key, value) {
-                        text += '<span onclick="fillModif(\'profil\', ' + value['ID'] + ')" class="one-f ft-1_5 mrg-top-2">' + value[field] + '</span>'
-                    })
-
-                    $("#list_data").html(text)
-                })
-                
-            }
-
-        })   
-
-        $('#modifBtn').click(function() {
-            
-            var bool = 0;
-            
-            $.each(array, function(key, value) {
-                //alert( value );
-                bool += checkError(value)
-            })
-
-            
-            if(bool == 5)
-            {
-                //alert('perfect')
-                
-                const URL_CONSCRUCT = new URL(url_update)
-                
-                URL_CONSCRUCT.searchParams.append("model", "profil")
-                URL_CONSCRUCT.searchParams.append("ID",  $('#idHidden').val())
-                $.each(array, function(key, value) {
-                    URL_CONSCRUCT.searchParams.append(value, $('#' + value).val())
-                })
-
-                //alert(URL_CONSCRUCT.href)
-                
-                $.get(URL_CONSCRUCT.href, function(data, status) {
-                    alert(data)
-                    //alert('boo')
-                })
-                
-            }
-        
-        })
-
-        $('#deleteBtn').click(function() {
-            //alert('here')
-            const URL_CONSCRUCT = new URL(url_delete)
-                
-            URL_CONSCRUCT.searchParams.append("model", "profil")
-            URL_CONSCRUCT.searchParams.append("ID",  $('#idHidden').val())
-
-            if(confirm("delete ?"))
-            {
-                $.get(URL_CONSCRUCT.href, function(data, status) {
-                    alert(data)
-                    //alert('boo')
-                })
-            }
-        })
+        modifType()
 
 
     }
 
 }
-else if(model == project)
+else if(model == project_)
 {
     var array = ['name', 'deadline', 'cursus_list']
     
-    if(type == 'create')
+    if(type == create_)
     {
-        $('#createBtn').click(function() {
-            var bool = 0;
-            
-            
-            $.each(array, function(key, value) {
-                //alert( value );
-                bool += checkError(value)
-            })
-
-            if(bool == 3)
-            {
-                const URL_CONSCRUCT = new URL(url_insert)
-
-                URL_CONSCRUCT.searchParams.append("model", "project")
-                $.each(array, function(key, value) {
-                    URL_CONSCRUCT.searchParams.append(value, $('#' + value).val())
-                })
-
-
-                $.get(URL_CONSCRUCT.href, function(data, status) {
-                    //alert(data)
-                    if(status == "success")
-                    {
-                        location.href = "?p=admin"
-                    }
-                })
-                
-
-            }
-
-        })
+        createBtn()
     }
-    else if(type == 'modif')
+    else if(type == modif_)
     {
-        $('#search').css('cursor', 'pointer')
+        $('#' + search_).css(cursor_, pointer_)
 
-        $('#search').click(function() {
-            //alert('here')
-
-            var bool = 0;
-            var array = ['datalist_list', 'text']
-        
-            $.each(array, function(key, value) {
-                //alert( value );
-                bool += checkError(value)
-            })
-            
-            if(bool == 2)
-            {
-                const URL_CONSCRUCT = new URL(url_search)
-
-                URL_CONSCRUCT.searchParams.append("model", "project")
-                $.each(array, function(key, value) {
-                    URL_CONSCRUCT.searchParams.append(value, $('#' + value).val())
-                })
-
-                
-                $.get(URL_CONSCRUCT.href, function(data, status) {
-                    data = JSON.parse(data)
-                    field = data[0]
-                    entity = data[1]
-
-                    var text = ""
-
-                    $.each(entity, function(key, value) {
-                        text += '<span onclick="fillModif(\'project\', ' + value['ID'] + ')" class="one-f ft-1_5 mrg-top-2">' + value[field] + '</span>'
-                    })
-
-                    $("#list_data").html(text)
-
-                })
-                
-            }
-
-        })   
-        
-        $('#modifBtn').click(function() {
-            
-            var bool = 0;
-            
-            $.each(array, function(key, value) {
-                //alert( value );
-                bool += checkError(value)
-            })
-
-            
-            if(bool == 3)
-            {
-                //alert('perfect')
-                
-                const URL_CONSCRUCT = new URL(url_update)
-                
-                URL_CONSCRUCT.searchParams.append("model", "project")
-                URL_CONSCRUCT.searchParams.append("ID",  $('#idHidden').val())
-                $.each(array, function(key, value) {
-                    URL_CONSCRUCT.searchParams.append(value, $('#' + value).val())
-                })
-
-                //alert(URL_CONSCRUCT.href)
-                
-                $.get(URL_CONSCRUCT.href, function(data, status) {
-                    alert(data)
-                })
-                
-            }
-        })
-
-        $('#deleteBtn').click(function() {
-            //alert('here')
-            const URL_CONSCRUCT = new URL(url_delete)
-                
-            URL_CONSCRUCT.searchParams.append("model", "project")
-            URL_CONSCRUCT.searchParams.append("ID",  $('#idHidden').val())
-
-            if(confirm("delete ?"))
-            {
-                $.get(URL_CONSCRUCT.href, function(data, status) {
-                    alert(data)
-                    //alert('boo')
-                })
-            }
-        })
+        modifType()
 
         //var arrayModif = ['name', 'deadline', 'cursus_list']
         
@@ -448,10 +105,195 @@ else if(model == project)
 }
 //let data = "data"
 
+
+
+
+/**
+ * 
+ * 
+ * 
+ * 
+ */
+
+
+function modifType()
+{
+    search()
+        
+    modifBtn()
+
+    deleteBtn()
+}
+
+function createBtn()
+{
+    $('#createBtn').click(function() {
+        var bool = 0;
+        
+        $.each(array, function(key, value) {
+            //alert( value );
+            bool += checkError(value)
+        })
+
+        
+        //alert(array.length == bool)
+        //array.length = nbr
+
+        if(array.length == bool)
+        {
+            const URL_CONSCRUCT = new URL(url_insert_)
+
+            URL_CONSCRUCT.searchParams.append("model", model)
+            $.each(array, function(key, value) {
+                URL_CONSCRUCT.searchParams.append(value, $('#' + value).val())
+            })
+
+            //alert(URL_CONSCRUCT.href)
+            if(confirm("create " + model))
+            {
+                $.get(URL_CONSCRUCT.href, function(data, status) {
+                    //alert(data)
+                    //alert(status)
+                    //alert("perfect " + model)
+                    /*
+                    if(status == "success")
+                    {
+                        location.href = "?p=admin"
+                    }
+                    */
+                    emptyInput()
+                })
+            }
+        }
+
+    })
+}
+
+function search()
+{
+    $('#text').keyup(function() {
+        //alert('here')
+
+        searchEvent()
+
+    })
+}
+
+function searchEvent()
+{
+    var bool = 0;
+    var array = ['datalist_list', 'text']
+
+    /*
+    $.each(array, function(key, value) {
+        //alert( value );
+        bool += checkError(value)
+    })
+    */
+    
+
+    const URL_CONSCRUCT = new URL(url_search_)
+
+    URL_CONSCRUCT.searchParams.append("model", model)
+    $.each(array, function(key, value) {
+        URL_CONSCRUCT.searchParams.append(value, $('#' + value).val())
+    })
+
+    if($('#' + array[1]).val() != "")
+    {
+        $.get(URL_CONSCRUCT.href, function(data, status) {
+            data = JSON.parse(data)
+            field = data[0]
+            entity = data[1]
+            
+            //alert( entity)
+            var text = ""
+
+            //alert(entity)
+            //alert(Array.isArray(entity[0]))
+
+            if(entity != "nothing herer")
+            {
+                $.each(entity, function(key, value) {
+                    text += '<span onclick="fillModif(\'' + model + '\', ' + value['ID'] + ')" class="one-f ft-1_5 mrg-top-2">' + value['NAME'] + '</span>'
+                }) 
+            }
+            else
+            {
+                text = '<span class="one-f ft-1_5 mrg-top-2">No result</span>'
+            }
+
+
+            $("#list_data").html(text)
+
+        })
+    }   
+    else
+    {
+        $("#list_data").html('')
+    }
+}
+
+function modifBtn()
+{
+    $('#modifBtn').click(function() {
+            
+        var bool = 0;
+        
+        $.each(array, function(key, value) {
+            //alert( value );
+            bool += checkError(value)
+        })
+
+        
+        if(array.length == bool)
+        {
+            //alert('perfect')
+            
+            const URL_CONSCRUCT = new URL(url_update_)
+            
+            URL_CONSCRUCT.searchParams.append("model", model)
+            URL_CONSCRUCT.searchParams.append("ID",  $('#idHidden').val())
+            $.each(array, function(key, value) {
+                URL_CONSCRUCT.searchParams.append(value, $('#' + value).val())
+            })
+
+            //alert(URL_CONSCRUCT.href)
+            
+            $.get(URL_CONSCRUCT.href, function(data, status) {
+                alert(data)
+                searchEvent()
+            })
+            
+        }
+    })
+}
+
+function deleteBtn()
+{
+    $('#deleteBtn').click(function() {
+        //alert('here')
+        const URL_CONSCRUCT = new URL(url_delete_)
+            
+        URL_CONSCRUCT.searchParams.append("model", model)
+        URL_CONSCRUCT.searchParams.append("ID",  $('#idHidden').val())
+
+        if(confirm("delete ?"))
+        {
+            $.get(URL_CONSCRUCT.href, function(data, status) {
+                alert(status)
+                //alert('boo')
+                searchEvent()
+                emptyInput()
+            })
+        }
+    })
+}
+
 function fillModif(model, obj)
 {
     
-    const URL_CONSCRUCT = new URL(url_search)
+    const URL_CONSCRUCT = new URL(url_search_)
     
     URL_CONSCRUCT.searchParams.append("model", model)
     URL_CONSCRUCT.searchParams.append("id", obj)
@@ -488,8 +330,8 @@ function fillModif(model, obj)
 
     //alert(arrayProject)
 
-    $('#modifBtn').css('cursor', 'pointer')
-    $('#deleteBtn').css('cursor', 'pointer')
+    $('#modifBtn').css(cursor_, pointer_)
+    $('#deleteBtn').css(cursor_, pointer_)
 }
 
 function checkError(field) 
@@ -499,7 +341,7 @@ function checkError(field)
     if(data == "")
     {
         //alert("Name undefined")
-        $("#" + field).attr("placeholder", field + " missing")
+        $("#" + field).attr("place-holder", "...")
         $("#" + field).css("background-color", "red")
 
         return false
@@ -510,4 +352,11 @@ function checkError(field)
         
         return true
     }
+}
+
+function emptyInput()
+{
+    $.each(array, function(key, value) {
+        $("#" + value).val("")
+    })
 }

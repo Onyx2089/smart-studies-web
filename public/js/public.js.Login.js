@@ -16,6 +16,10 @@ $("#connect").click(function() {
             {
                 window.location = url_web + "?p=planning"
             }
+            else
+            {
+                alert("profil not found")
+            }
         })
     }
 });
