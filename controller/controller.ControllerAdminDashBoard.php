@@ -11,14 +11,14 @@ class ControllerAdminDashBoard
         session_destroy();
 
         $title = "DashBoard";
-        //$css[0] = '<link rel="stylesheet" type="text/css" href="'. ConfigInterface::APP_DIR .'/public/css/public.css.PublicCssStyle.css">';
+        //$css[0] = '<link rel="stylesheet" type="text/css" href="'. Iconfig::APP_DIR .'/public/css/public.css.PublicCssStyle.css">';
         
         $css = array('Style', 'HomePage', 'Profil', 'planning');
         $css = LinkClass::checkLink($css, LinkClass::TYPE_CSS);
         
 
 
-        //$css[1] = '<link rel="stylesheet" type="text/css" href="'. ConfigInterface::APP_DIR .'public/css/public.css.PublicCssHomePage.css">';
+        //$css[1] = '<link rel="stylesheet" type="text/css" href="'. Iconfig::APP_DIR .'public/css/public.css.PublicCssHomePage.css">';
         
         if(isset($_GET['model']) && isset($_GET['type']))
         {
@@ -41,7 +41,7 @@ class ControllerAdminDashBoard
                         $content = FormHtml::getModifForm(IModel::ARRAY_MODEL[$model]);
                     }
 
-                    require_once __DIR__ . '/../view/template/view.template.AdminDashboard.php';
+                    require_once __DIR__ . '/../view/view.ViewAdminDashboard.php';
                 }
                 else
                 {
