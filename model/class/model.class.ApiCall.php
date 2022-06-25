@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/../interface/model.interface.IApiCall.php';
+require_once __DIR__ . '/model.class.IApiCall.php'; //'/../interface/model.interface.IApiCall.php';
 
 class ApiCall implements IApiCall
 {
