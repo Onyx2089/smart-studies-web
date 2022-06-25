@@ -1,6 +1,6 @@
 <html>
 
-    <?php require_once __DIR__ . '/../../view/template/view.template.Base.php'; ?>
+    <?php require_once __DIR__ . '/view.ViewBase.php'; ?>
 
     <body>
         
@@ -10,7 +10,7 @@
         
         <div class="fix wid-100 hei-100 f flex-col ai-center top-0">
             <div class="ft-3 one-f f f1 ai-center">
-                Bienvenue sur le nouveau PEGA
+                Bienvenue sur <?= IConfig::APP_NAME ?>
             </div>
             <div class="wid-18 f f1 flex-col ai-center">
                 <div class="wid-100 f f1 flex-col">

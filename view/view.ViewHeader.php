@@ -4,6 +4,6 @@
         <div class="ham-stick brd-40"></div>
         <div class="ham-stick brd-40"></div>
     </div>
-    <span class="header-title one-f ft-3"><?= ConfigInterface::APP_NAME ?></span>
+    <span class="header-title one-f ft-3"><?= Iconfig::APP_NAME ?></span>
     <div class="header-lang"></div>
 </header>

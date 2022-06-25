@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 
-    <?php require_once __DIR__ . '/../../view/template/view.template.Base.php'; ?>
+    <?php require_once __DIR__ . '/view.ViewBase.php'; ?>
 
     <body>
-        <?php require_once __DIR__ . '/../../view/template/view.template.Header.php'; ?>
+        <?php require_once __DIR__ . '/view.ViewHeader.php'; ?>
         <img src="/git/web_final/public/img/background.png" class="wid-100 op-03"/>
 
         <div class="content f flex-col">
