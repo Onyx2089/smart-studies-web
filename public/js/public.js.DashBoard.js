@@ -11,10 +11,10 @@ const project_ = "project"
 
 const search_ = "search"
 
-const url_insert_ = url_web_async + "script.async.InsertModel.php"
-const url_search_ = url_web_async + "script.async.SearchModel.php"
-const url_update_ = url_web_async + "script.async.Update.php"
-const url_delete_ = url_web_async + "script.async.DeleteModel.php"
+const url_insert_ = url_web_async + "action.ActionInsertModel.php"
+const url_search_ = url_web_async + "action.ActionSearchModel.php"
+const url_update_ = url_web_async + "action.ActionUpdate.php"
+const url_delete_ = url_web_async + "action.ActionDeleteModel.php"
 
 //      //
 

@@ -4,7 +4,7 @@ $("#connect").click(function() {
 
     if(email != "" && password != "")
     {
-        $.get(url_web_async + "script.async.Login.php?email=" + email + "&password=" + password, function(data, status) {
+        $.get(url_web_async + "action.ActionLogin.php?email=" + email + "&password=" + password, function(data, status) {
 
             console.log(data)
             

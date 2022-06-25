@@ -5,7 +5,7 @@ function getClass(cursus)
     time = date.toISOString().slice(0, 10)
     //alert(cursus + ' ' + time);
     
-    $.get(url_web_async + "script.async.PlanningClass.php?cursus=" + cursus + "&time=" + time, function(data) {
+    $.get(url_web_async + "action.ActionPlanningClass.php?cursus=" + cursus + "&time=" + time, function(data) {
         data = JSON.parse(data)
         //console.log(data)
 
@@ -32,7 +32,7 @@ function getProject(cursus)
     const date = new Date()
     time = date.toISOString().slice(0, 10)
 
-    $.get(url_web_async + "script.async.PlanningProject.php?cursus=" + cursus + "&time=" + time, function(data) {
+    $.get(url_web_async + "action.ActionPlanningProject.php?cursus=" + cursus + "&time=" + time, function(data) {
         data = JSON.parse(data)
         console.log(data)
     
