@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/../../config/config.ConfigInterface.php';
+require_once __DIR__ . '/../../config/config.Iconfig.php';
 require_once __DIR__ . '/lib.link.ILink.php';
 
 class LinkClass implements ILink
