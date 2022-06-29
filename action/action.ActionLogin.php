@@ -13,6 +13,7 @@ if(isset($_GET['email']) && isset($_GET['password']))
 
     $array = ApiCall::get(ApiCall::MODEL_PROFIL, $field, $op, $value);
 
+
     //print_r($array);
     //die();
     //print_r($res);

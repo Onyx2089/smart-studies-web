@@ -27,7 +27,6 @@ class LinkClass implements ILink
                 {
                     foreach($files as $file)
                     {
-                        //echo LinkInterface::DIR_CSS . $file . LinkInterface::BASENAME_CSS;
 
                         if(file_exists(sprintf($dir, $file)))
                         {
@@ -56,7 +55,7 @@ class LinkClass implements ILink
                 elseif($type == self::TYPE_JS)
                 {
                     $tag = self::TAG_JS;
-                    //print_r($files);
+                
                 }
 
                 if(sizeof($files) != 0)
@@ -66,7 +65,7 @@ class LinkClass implements ILink
                         foreach($files as $file)
                         {
                             echo sprintf($tag, $file) . PHP_EOL;
-                            //echo "alert($file)";
+                           
                         }
                     }
                 }

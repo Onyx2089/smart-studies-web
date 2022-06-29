@@ -27,12 +27,7 @@ class FormHtml implements IFormHtml, IModel
         $left =  $search . sprintf(self::LIST_MODEL, sprintf(self::LIST_ELEM, "rien de trouvé"));
         $left = sprintf(self::BLOCK, $left);
 
-        //$update = '';
-        /*foreach($array as $value)
-        {
-            $update .= sprintf(self::UPDATE_ELEM, $value[1] . ":  ...");
-        }
-        */
+   
         $update = self::getCreateInput($array, true);
 
         $update .= self::HIDDEN_ID;

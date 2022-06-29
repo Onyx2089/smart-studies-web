@@ -190,7 +190,7 @@ a:link{
 /* root */
 
 :root {
-    --font: cursive;
+    --font: "Times New Roman", Times, serif;
     /*
     --one: #17604B;
     --two: #A6EAD6;

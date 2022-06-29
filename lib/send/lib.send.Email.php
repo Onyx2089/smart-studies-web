@@ -19,8 +19,7 @@ class Email implements IEmail
 
     public static function send()
     {
-        //$text = $this->text;
 
-        return mail("arthur.rubiralta@ecole-89.com", "password", "azerty");
+        //return mail("arthur.rubiralta@ecole-89.com", "password", "azerty");
     }
 }

@@ -13,7 +13,6 @@ interface ILink
     const CSS = "css/";
     const DIR_CSS = __DIR__ . "/../../" . self::PUBLIC . self::CSS . self::FILE_CSS;
     const DIR_CSS_CONFIG = Iconfig::APP_DIR . self::PUBLIC . self::CSS . self::FILE_CSS;
-    //const BASENAME_CSS = ".css";
     const TAG_CSS = '<link rel="stylesheet" type="text/css" href="%s">';  
 
     /**

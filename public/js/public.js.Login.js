@@ -18,7 +18,8 @@ $("#connect").click(function() {
             }
             else
             {
-                alert("profil not found")
+                alert(data)
+                //alert("profil not found")
             }
         })
     }
