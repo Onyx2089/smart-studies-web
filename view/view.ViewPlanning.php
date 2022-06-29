@@ -24,16 +24,6 @@
                             <span class="mrg-right-10 ft-1_5 one-f">Horaires</span>
                         </div>
                         <div id="class" class="f6 scrool-auto">
-                            <!--<div class="content-std f jc-space-between ai-center">
-                                <span class="mrg-left-10 ft-1_5 one-f">Français</span>
-                                <span class="ft-1_5 one-f">Atelier 201</span>
-                                <span class="mrg-right-10 ft-1_5 one-f">15h-16h</span>     
-                            </div>
-                            <div class="content-std f jc-space-between ai-center">
-                                <span class="mrg-left-10 ft-1_5 one-f">Anglais</span>
-                                <span class="ft-1_5 one-f">Atelier 206</span>
-                                <span class="mrg-right-10 ft-1_5 one-f">16h-18h</span>     
-                            </div>-->
                         </div>
                     </div>
                 </div>
@@ -47,18 +37,6 @@
                             <span class="mrg-right-10 ft-1_5 one-f">Date de rendu</span>
                         </div>
                         <div id="project" class="f6 scrool-auto">
-                            <!--<div class="content-std f jc-space-arround ai-center">
-                                <span class="mrg-left-10 ft-1_5 one-f">App.vue</span>
-                                <span class="mrg-right-10 ft-1_5 one-f">09/06/2022</span>     
-                            </div>
-                            <div class="content-std f jc-space-arround ai-center">
-                                <span class="mrg-left-10 ft-1_5 one-f">Web War</span>
-                                <span class="mrg-right-10 ft-1_5 one-f">11/15/2022</span>     
-                            </div>
-                            <div class="content-std f jc-space-arround ai-center">
-                                <span class="mrg-left-10 ft-1_5 one-f">Printf/Scanf</span>
-                                <span class="mrg-right-10 ft-1_5 one-f">12/06/2022</span>     
-                            </div>-->
                         </div>
                     </div>
                 </div>

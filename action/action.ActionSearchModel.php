@@ -11,7 +11,7 @@ if(isset($_GET['model']))
     $model = $_GET['model'];
     if(isset($_GET['datalist_list']) && isset($_GET['text']))
     {
-        //print_r($_GET);
+      
         $column = $_GET['datalist_list'];
         
         if(array_key_exists($model, IModel::ARRAY_MODEL))
@@ -34,18 +34,11 @@ if(isset($_GET['model']))
 
             if(isset($field))
             {
-                //$field = array(ModelProject::PROJECT_ARRAY[$_GET['datalist_list']]);
+             
                 $op = array("LIKE");
                 $value = array($_GET['text']);
 
-                //print_r($field);
-                /*
-                $field = array("EMAIL", "PASSWORD");
-                $op = array("EQ", "EQ");
-                $value = array($_GET['email'], $_GET['password']);
-                */
-
-                //print_r(array($field, $op, $value));
+          
 
                 $res = ApiCall::get($_GET['model'], $field, $op, $value);
                 $res = json_encode(array($array[$column], $res));
@@ -67,7 +60,7 @@ if(isset($_GET['model']))
 
         if(isset($res[0]->CURSUS))
         {
-            //echo "here";
+          
             $res[0]->CURSUS = IModel::ARRAY_CURSUS[$res[0]->CURSUS];
         }
         if(isset($res[0]->STAT))

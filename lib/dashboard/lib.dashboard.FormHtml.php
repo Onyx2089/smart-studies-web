@@ -13,7 +13,6 @@ class FormHtml implements IFormHtml, IModel
 
         $html .= sprintf(self::CONTAINER_COL, $content);
 
-        //return print_r($array);
 
         return $html;
     }
@@ -53,7 +52,7 @@ class FormHtml implements IFormHtml, IModel
             if($field[0] == self::STR)
             {
                 $input = $field[1] . " :" . sprintf(self::INPUT, strtolower($key), self::INPUT_TEXT, "...");
-                //$input = sprintf("<span>%s</span>", $input);
+              
             }
             elseif($field[0] == self::INT)
             {
@@ -109,8 +108,7 @@ class FormHtml implements IFormHtml, IModel
     public static function getList($array)
     {
 
-        //echo self::LIST;
-        //die();
+    
         $list = sprintf(self::LIST, self::DATALIST_NAME, self::DATALIST_NAME);
         $options = '';
 

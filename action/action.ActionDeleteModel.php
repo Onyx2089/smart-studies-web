@@ -2,7 +2,7 @@
 
 require_once __DIR__ . '/../model/class/model.class.ApiCall.php'; 
 
-//echo "test";
+
 if(isset($_GET['model']))
 {
     $model = $_GET['model'];

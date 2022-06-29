@@ -11,11 +11,10 @@ if(isset($_GET['cursus']) && isset($_GET['time']))
 
     $array = ApiCall::get(ApiCall::MODEL_CLASS, $field, $op, $value, $order);
 
-    //echo $array;
-    //print_r($array);
+   
     
     print_r(json_encode($array));
-    //print_r($value);
+   
 
     foreach($array as $class)
     {
@@ -23,7 +22,6 @@ if(isset($_GET['cursus']) && isset($_GET['time']))
         
     }
 
-    //print_r(json_encode($res));
-    //if(array_multisort($res, SORT_ASC)){}
+  
 
 }

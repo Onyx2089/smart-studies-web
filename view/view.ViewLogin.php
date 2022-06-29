@@ -35,8 +35,6 @@
         </div>
 
 
-        <!--<script src="http://localhost/git/web_final/public/js/public.js.Const.js"></script>
-        <script src="http://localhost/git/web_final/public/js/public.js.Login.js"></script>-->
         <?php LinkClass::getLink($js, LinkClass::TYPE_JS); ?>
 
     </body>

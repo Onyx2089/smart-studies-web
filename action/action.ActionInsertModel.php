@@ -62,9 +62,7 @@ if(isset($_GET['model']))
                         }
                     }
                 
-                    //print_r(array( $field, $array) );
-                    //die();
-                    //print_r( array($field, $array));
+ 
                     $res = ApiCall::post($model, $field, $array);
                 
                     if($res != null)
@@ -83,7 +81,7 @@ if(isset($_GET['model']))
 
         
 
-        //ApiCall::post();
+      
     }
     else
     {
@@ -92,5 +90,3 @@ if(isset($_GET['model']))
 }
 
 
-//print_r($_GET);
-//print_r(ModelProject::PROJECT_ARRAY);

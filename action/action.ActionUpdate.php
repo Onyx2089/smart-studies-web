@@ -39,42 +39,17 @@ if(isset($_GET['model']))
             if(!isset($data['model']) && !isset($data['ID']))
             {
                 
-                //echo sizeof($array) . " " . sizeof($data);
-                //print_r($array);
-                //print_r($data);
-
+            
                 $res = ApiCall::put($model, $id, $array, $data);
                 
-                //print_r($res);
-                
-                //echo "<- res";
-                //echo 'update';
-
-                //die();
+            
                 $res = json_encode($res);
 
                 if($res != false)
                 {
                     echo $res;
                 }
-                /*
-                if(sizeof($data) == sizeof($array))
-                {
-                    $data = array_values($data);
-                    $array = array_values($array);
-
-                    $listCount = 0;
-                    $list = array();
-
-                    while($listCount != sizeof($data))
-                    {
-                        echo $array[$listCount] . ' : ' . $data[$listCount] . PHP_EOL;
-                        $listCount++;
-                    }
-
-                    //print_r($array);
-                }
-                */
+      
             }
         }
     }

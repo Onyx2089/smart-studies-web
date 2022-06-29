@@ -6,7 +6,7 @@ class Rand implements IRand
 {
     public static function password($size)
     {
-        //$characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      
         $charactersLength = strlen(self::ALL);
         $randomString = '';
         for ($i = 0; $i < $size; $i++) {

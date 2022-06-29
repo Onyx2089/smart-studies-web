@@ -8,7 +8,7 @@ class ControllerLogin
         session_destroy();
 
         $title = "Login";
-        //$css[0] = '<link rel="stylesheet" type="text/css" href="'. Iconfig::APP_DIR .'/public/css/public.css.PublicCssStyle.css">';
+        
         
         $css = array('Style', 'HomePage');
         $css = LinkClass::checkLink($css, LinkClass::TYPE_CSS);

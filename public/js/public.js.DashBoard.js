@@ -98,12 +98,11 @@ else if(model == project_)
 
         modifType()
 
-        //var arrayModif = ['name', 'deadline', 'cursus_list']
         
     }
     
 }
-//let data = "data"
+
 
 
 
@@ -131,13 +130,12 @@ function createBtn()
         var bool = 0;
         
         $.each(array, function(key, value) {
-            //alert( value );
+    
             bool += checkError(value)
         })
 
         
-        //alert(array.length == bool)
-        //array.length = nbr
+
 
         if(array.length == bool)
         {
@@ -148,20 +146,14 @@ function createBtn()
                 URL_CONSCRUCT.searchParams.append(value, $('#' + value).val())
             })
 
-            //alert(URL_CONSCRUCT.href)
+    
             if(confirm("create " + model))
             {
                 $.get(URL_CONSCRUCT.href, function(data, status) {
-                    //alert(data)
-                    //alert(status)
-                    //alert("perfect " + model)
-                    /*
-                    if(status == "success")
-                    {
-                        location.href = "?p=admin"
-                    }
-                    */
+  
                     emptyInput()
+
+                    alert(status)
                 })
             }
         }
@@ -172,7 +164,6 @@ function createBtn()
 function search()
 {
     $('#text').keyup(function() {
-        //alert('here')
 
         searchEvent()
 
@@ -184,13 +175,6 @@ function searchEvent()
     var bool = 0;
     var array = ['datalist_list', 'text']
 
-    /*
-    $.each(array, function(key, value) {
-        //alert( value );
-        bool += checkError(value)
-    })
-    */
-    
 
     const URL_CONSCRUCT = new URL(url_search_)
 
@@ -206,11 +190,9 @@ function searchEvent()
             field = data[0]
             entity = data[1]
             
-            //alert( entity)
             var text = ""
 
-            //alert(entity)
-            //alert(Array.isArray(entity[0]))
+     
 
             if(entity != "nothing herer")
             {
@@ -241,14 +223,14 @@ function modifBtn()
         var bool = 0;
         
         $.each(array, function(key, value) {
-            //alert( value );
+          
             bool += checkError(value)
         })
 
         
         if(array.length == bool)
         {
-            //alert('perfect')
+        
             
             const URL_CONSCRUCT = new URL(url_update_)
             
@@ -258,11 +240,11 @@ function modifBtn()
                 URL_CONSCRUCT.searchParams.append(value, $('#' + value).val())
             })
 
-            //alert(URL_CONSCRUCT.href)
+        
             
             $.get(URL_CONSCRUCT.href, function(data, status) {
-                alert(data)
                 searchEvent()
+                alert(status)
             })
             
         }
@@ -272,7 +254,7 @@ function modifBtn()
 function deleteBtn()
 {
     $('#deleteBtn').click(function() {
-        //alert('here')
+       
         const URL_CONSCRUCT = new URL(url_delete_)
             
         URL_CONSCRUCT.searchParams.append("model", model)
@@ -281,10 +263,11 @@ function deleteBtn()
         if(confirm("delete ?"))
         {
             $.get(URL_CONSCRUCT.href, function(data, status) {
-                alert(status)
-                //alert('boo')
+             
                 searchEvent()
                 emptyInput()
+               
+                alert(status)
             })
         }
     })
@@ -299,36 +282,28 @@ function fillModif(model, obj)
     URL_CONSCRUCT.searchParams.append("id", obj)
     
     $.get(URL_CONSCRUCT.href, function(data, status) {
-        //alert(data)
+        
         data = JSON.parse(data)
         
-        //console.log(data)
+    
         
         field = data[0]
         value = data[1][0]
         
-        //alert(field)
-        //console.log(field)
-        //console.log(value)
+  
 
         
         $.each(array, function(key, data) {
-            //alert(value[field[key]])
-        
-            //alert(data)
+      
             $('#' + data).val(value[field[key]])
         })
         
-        //console.log(value)
+    
         $('#idHidden').val(value['ID'])
         
-        //$("#name").val('test')
-
-        
-        //alert(field[0])
     })
 
-    //alert(arrayProject)
+
 
     $('#modifBtn').css(cursor_, pointer_)
     $('#deleteBtn').css(cursor_, pointer_)
@@ -340,7 +315,7 @@ function checkError(field)
 
     if(data == "")
     {
-        //alert("Name undefined")
+     
         $("#" + field).attr("place-holder", "...")
         $("#" + field).css("background-color", "red")
 

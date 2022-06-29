@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/model.class.IApiCall.php'; //'/../interface/model.interface.IApiCall.php';
+require_once __DIR__ . '/model.class.IApiCall.php';
 
 class ApiCall implements IApiCall
 {
@@ -17,23 +17,19 @@ class ApiCall implements IApiCall
             $url .= sprintf("&sort=%s", json_encode($sort));
         }
 
-        //return $url;
-
-        //TO DO HERE ERROR
-        //return $url;
         
         $curl = curl_init($url);
         curl_setopt($curl, CURLOPT_HTTPGET, true);
 
         $res = self::apiReturn($curl);
 
-        return $res;//print_r($res);
+        return $res;
     }
 
     public static function post($table, $field, $value)
     {
         $value = array_values($value);
-        //return $value;
+       
         if(sizeof($field) == sizeof($value))
         {
             $array = array();
@@ -61,10 +57,10 @@ class ApiCall implements IApiCall
 
     public static function put($table, $id, $field, $value)
     {
-        //return array($field, $value);
+       
         if(sizeof($field) == sizeof($value) || $table == IModel::MODEL_PROFIL && sizeof($field) == sizeof($value) + 1)
         {
-            //return 'hey';
+           
             $field = array_values($field);
             $value = array_values($value);
 
@@ -73,7 +69,7 @@ class ApiCall implements IApiCall
 
             while($listCount != sizeof($value))
             {
-                //echo $field[$listCount] . ' : ' . $value[$listCount] . PHP_EOL;
+           
                 $list[$field[$listCount]] = $value[$listCount];
                 $listCount++;
             }
@@ -97,23 +93,19 @@ class ApiCall implements IApiCall
             }
 
             $array['ID'] = $id;
-            //print_r($array);
-            //die();
+        
 
             
             $url = self::URL_API . "model=$table&" . http_build_query($array, JSON_FORCE_OBJECT);
 
-            //echo $url . "<- url";
-            //return $url;
-
-            //die();
+       
             $curl = curl_init($url);
             curl_setopt($curl, CURLOPT_PUT, true);
 
             $res = self::apiReturn($curl);
 
             return $res;
-            //print_r($list);
+            
         }
     }
 
@@ -126,7 +118,7 @@ class ApiCall implements IApiCall
 
         $url = self::URL_API . http_build_query($array, JSON_FORCE_OBJECT);
 
-        //return $url;
+      
 
         $curl = curl_init($url);
         curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "DELETE");
@@ -142,7 +134,7 @@ class ApiCall implements IApiCall
         $res = curl_exec($curl);
         curl_close($curl);
 
-        //return $res;
+      
         return json_decode($res);
     }
 }
